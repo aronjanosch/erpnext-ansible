@@ -1,0 +1,18 @@
+username: aron
+timezone: Europe/Berlin
+docker_dir: /opt/docker/data
+guid: "1000"
+uuid: "1000"
+colorscheme: nord
+
+essential_packages:
+  - neofetch
+  - htop
+  - speedtest-cli
+  - git
+  - neovim
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - rsync
+  - fish

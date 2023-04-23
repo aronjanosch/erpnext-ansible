@@ -1,0 +1,13 @@
+---
+- name: Create the {{ container_name }} container
+  docker_container:
+    name: "{{ container_name }}"
+    image: "portainer/portainer-ce:latest"
+    pull: yes
+    state: 'started'
+    networks:
+      - name: traefik_proxy
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "{{ docker_dir }}/{{ container_name }}:/data"
+    restart_policy: unless-stopped
