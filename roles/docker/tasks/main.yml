@@ -1,11 +1,12 @@
 ---
-- include_vars: Ubuntu.yml
+- name: Include Ubuntu vars
+  include_vars: Ubuntu.yml
 
 - name: Install required system packages
   package:
     state: present
     name: "{{ docker_deps }}"
-  
+
 - name: Install Docker (Ubuntu)
   block:
   - name: Add Docker GPG apt Key
@@ -20,7 +21,7 @@
 
 - name: Update apt and install docker-ce
   apt:
-    update_cache: yes
+    update_cache: true
     name: "{{ docker_packages }}"
     state: present
 
@@ -34,14 +35,37 @@
     name: '{{ username }}'
     groups:
       - docker
-    append: yes
+    append: true
 
 - name: Install Docker Module for Python
   pip:
     name: docker
 
+- name: Install Python and python3-pip
+  package:
+    name:
+      - python3
+      - python3-pip
+    state: present
+
+- name: Install docker module for Python
+  pip:
+    name: 
+      - docker
+      - docker-compose
+
 - name: Make sure Docker is running and enabled
   service:
     name: docker
     state: started
-    enabled: yes
+    enabled: true
+
+- name: Make sure that the docker folders exists
+  ansible.builtin.file:
+    path: "{{ item }}"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    state: directory
+  loop:
+    - "{{ docker_compose_dir }}"
+    - "{{ docker_dir }}"

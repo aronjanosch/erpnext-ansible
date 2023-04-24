@@ -1,10 +1,12 @@
 username: aron
 timezone: Europe/Berlin
 docker_dir: /opt/docker/data
+docker_compose_dir: /opt/docker/compose
 guid: "1000"
 uuid: "1000"
 colorscheme: nord
 email: ""
+shell: /usr/bin/fish
 
 essential_packages:
   - neofetch
