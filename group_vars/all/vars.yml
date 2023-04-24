@@ -4,6 +4,7 @@ docker_dir: /opt/docker/data
 guid: "1000"
 uuid: "1000"
 colorscheme: nord
+email: ""
 
 essential_packages:
   - neofetch
@@ -16,3 +17,5 @@ essential_packages:
   - curl
   - rsync
   - fish
+
+erpnext_environment: "dev"

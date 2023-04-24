@@ -1,0 +1,3 @@
+---
+container_name: traefik
+traefik_domain: traefik.{{ domain }}

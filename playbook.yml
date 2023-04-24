@@ -1,15 +1,16 @@
 ---
-- hosts: all
-  become: yes
+- name: Setup ERP Next {{ erpnext_environment }}
+  hosts: all
+  become: true
 
   tasks:
-    - import_tasks: tasks/essentials.yml
-  
+    - ansible.builtin.import_tasks module: 
+      file: tasks/essentials.yml
+
   roles:
     - role: docker
       tags:
         - docker
-    
 
     # - role: containers/portainer
     #   tags:
